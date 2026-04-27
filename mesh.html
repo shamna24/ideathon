@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesh Simulator | ResQLink</title>
+    <link rel="stylesheet" href="mesh.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="index.html" class="nav-link">← Back to SMS Dashboard</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Mesh Disaster Communication</h1>
+            <p>Visualizing resilient multi-hop communication in disaster zones</p>
+        </header>
+
+        <div class="main-layout">
+            <!-- Left: Input -->
+            <section class="panel input-panel">
+                <h2>Citizen Request</h2>
+                <div class="input-container">
+                    <textarea id="mesh-input" placeholder="e.g., MEDICAL EMERGENCY AT SECTOR 7"></textarea>
+                    <button id="send-mesh-btn">Send via Mesh</button>
+                </div>
+            </section>
+
+            <!-- Middle: Visualization -->
+            <section class="panel viz-panel">
+                <h2>Network Mesh</h2>
+                <div class="mesh-viz">
+                    <div class="node citizen" id="node-citizen">
+                        <div class="node-icon">👤</div>
+                        <span>Citizen</span>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="node router" id="node-a">
+                        <div class="node-icon">📡</div>
+                        <span>Node A</span>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="node router" id="node-b">
+                        <div class="node-icon">📡</div>
+                        <span>Node B</span>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="node responder" id="node-responder">
+                        <div class="node-icon">🚑</div>
+                        <span>Responder</span>
+                    </div>
+                </div>
+                <div id="status-indicator" class="status-indicator">Ready to transmit...</div>
+            </section>
+
+            <!-- Right: Log -->
+            <section class="panel log-panel">
+                <h2>Communication Log</h2>
+                <div id="log-display" class="log-display">
+                    <div class="log-entry system">System initialized. Waiting for message...</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- History Section -->
+        <section class="history-section">
+            <h2>Previous Mesh Requests</h2>
+            <div id="mesh-history-list" class="history-list">
+                <!-- History items injected here -->
+                <p class="empty-msg">No previous requests found.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="mesh.js"></script>
+</body>
+</html>

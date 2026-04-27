@@ -80,6 +80,31 @@ header {
     color: var(--text-secondary);
     font-size: 1.1rem;
     font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav-btn {
+    text-decoration: none;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+    transform: translateY(-2px);
 }
 
 main {
