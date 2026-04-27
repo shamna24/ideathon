@@ -1,0 +1,17 @@
+{
+  "name": "resqlink-sms-coordination",
+  "version": "1.0.0",
+  "description": "SMS-Based Disaster Coordination System",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y live-server .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "disaster-relief",
+    "sms",
+    "coordination"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

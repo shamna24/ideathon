@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQLink | SMS Disaster Coordination</title>
+    <meta name="description" content="Efficient SMS-based coordination system for emergency responders and volunteers during disasters.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <div class="pulse-icon"></div>
+                <h1>ResQLink</h1>
+            </div>
+            <p class="subtitle">SMS-Based Disaster Coordination</p>
+        </header>
+
+        <main>
+            <section id="sms-input-section" class="card">
+                <h2><span class="icon">📲</span> Simulate SMS Input</h2>
+                <div class="input-group">
+                    <input type="text" id="sms-input" placeholder="HELP MEDICAL 2 PEOPLE WHITEFIELD" aria-label="Enter SMS message">
+                    <button id="send-sms-btn">Send SMS</button>
+                </div>
+                <p class="hint">Try keywords like: MEDICAL, FOOD, FLOOD, RESCUE</p>
+            </section>
+
+            <section id="dashboard-section">
+                <div class="dashboard-header">
+                    <h2><span class="icon">📊</span> Live Requests Dashboard</h2>
+                    <div id="stats" class="stats">
+                        <span id="pending-count">0 Pending</span>
+                    </div>
+                </div>
+                <div id="requests-list" class="requests-grid">
+                    <!-- Requests will be injected here -->
+                    <div id="empty-state" class="empty-state">
+                        <p>No active requests. Waiting for incoming SMS...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 ResQLink Emergency Systems. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
