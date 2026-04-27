@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const smsInput = document.getElementById('sms-input');
+    const locationInput = document.getElementById('location-input');
     const sendBtn = document.getElementById('send-sms-btn');
     const requestsList = document.getElementById('requests-list');
     const pendingCount = document.getElementById('pending-count');
@@ -27,36 +28,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Listeners
     sendBtn.addEventListener('click', handleSendSMS);
-    smsInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSendSMS();
+    
+    // Add Enter key support for both inputs
+    [smsInput, locationInput].forEach(el => {
+        el.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendSMS();
+        });
     });
 
     function handleSendSMS() {
         const message = smsInput.value.trim();
+        const manualLocation = locationInput.value.trim();
+        
         if (!message) return;
 
-        const newRequest = processSMS(message);
+        const newRequest = processSMS(message, manualLocation);
         requests.unshift(newRequest); // Add to beginning
         saveToLocalStorage();
         renderRequests();
         renderMarkers();
         
-        // Clear input and focus
+        // Clear inputs and focus
         smsInput.value = '';
+        locationInput.value = '';
         smsInput.focus();
         
         // Visual feedback
         showNotification('Request processed successfully');
     }
 
-    function processSMS(message) {
+    function processSMS(message, manualLocation) {
         const upperMsg = message.toUpperCase();
         let type = 'General';
         let responder = 'Local Volunteers';
         let className = 'general';
         let color = '#10b981';
-        let locationName = 'Unknown';
+        let locationName = manualLocation || 'Unknown';
 
+        // Type Detection
         if (upperMsg.includes('MEDICAL')) {
             type = 'Medical';
             responder = 'Ambulance Team';
@@ -74,18 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
             color = '#3b82f6';
         }
 
-        // Determine location
-        let coords = locations['WHITEFIELD']; // Default
-        for (const loc in locations) {
-            if (upperMsg.includes(loc)) {
-                coords = locations[loc];
-                locationName = loc;
-                break;
+        // Location Extraction (only if not manually provided)
+        if (locationName === 'Unknown') {
+            for (const loc in locations) {
+                if (upperMsg.includes(loc)) {
+                    locationName = loc;
+                    break;
+                }
             }
         }
+
+        // Coordinate Mapping
+        let coords = null;
+        const upperLocName = locationName.toUpperCase();
         
-        // If no keyword, pick random sample location for map but keep name Unknown
-        if (locationName === 'Unknown') {
+        // Check if location matches a known coordinate
+        if (locations[upperLocName]) {
+            coords = locations[upperLocName];
+        } else {
+            // Pick a random sample coordinate for the map marker
             const locKeys = Object.keys(locations);
             coords = locations[locKeys[Math.floor(Math.random() * locKeys.length)]];
         }
