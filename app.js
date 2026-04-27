@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let responder = 'Local Volunteers';
         let className = 'general';
         let color = '#10b981';
+        let locationName = 'Unknown';
 
         if (upperMsg.includes('MEDICAL')) {
             type = 'Medical';
@@ -78,12 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const loc in locations) {
             if (upperMsg.includes(loc)) {
                 coords = locations[loc];
+                locationName = loc;
                 break;
             }
         }
         
-        // If no keyword, pick random sample location
-        if (coords === locations['WHITEFIELD'] && !upperMsg.includes('WHITEFIELD')) {
+        // If no keyword, pick random sample location for map but keep name Unknown
+        if (locationName === 'Unknown') {
             const locKeys = Object.keys(locations);
             coords = locations[locKeys[Math.floor(Math.random() * locKeys.length)]];
         }
@@ -97,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             status: 'Assigned',
             timestamp: new Date().toLocaleString(),
             coords: coords,
+            locationName: locationName,
             color: color
         };
     }
@@ -123,9 +126,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="timestamp">${req.timestamp}</span>
                 </div>
                 <p class="message-text">"${req.message}"</p>
-                <div class="assignment-info">
-                    <span class="icon">📍</span>
-                    <span>Assigned to: <span class="responder-name">${req.responder}</span></span>
+                <div class="info-row">
+                    <div class="assignment-info">
+                        <span class="icon">🛡️</span>
+                        <span>Assigned: <span class="responder-name">${req.responder}</span></span>
+                    </div>
+                    <div class="location-info ${req.locationName === 'Unknown' ? 'unknown' : ''}">
+                        <span class="icon">📍</span>
+                        <span>Location: <span class="loc-name">${req.locationName}</span></span>
+                    </div>
                 </div>
                 <div class="request-footer">
                     <span class="status-badge">${req.status}</span>
@@ -159,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="font-family: 'Outfit', sans-serif;">
                         <strong style="color: ${req.color}">${req.type} Request</strong><br>
                         <p style="margin: 5px 0;">"${req.message}"</p>
+                        <small>Location: <strong>${req.locationName}</strong></small><br>
                         <small>Status: <strong>${req.status}</strong></small><br>
                         <small>Responder: ${req.responder}</small>
                     </div>

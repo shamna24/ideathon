@@ -260,17 +260,38 @@ button:active {
     word-break: break-word;
 }
 
-.assignment-info {
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.assignment-info, .location-info {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
+    gap: 6px;
+    font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
-.responder-name {
+.responder-name, .loc-name {
     color: var(--text-primary);
     font-weight: 600;
+}
+
+.loc-name {
+    color: var(--accent-primary);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.location-info.unknown .loc-name {
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    font-style: italic;
 }
 
 .request-footer {
