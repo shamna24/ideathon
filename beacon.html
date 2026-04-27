@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beacon Portal | ResQLink</title>
+    <link rel="stylesheet" href="beacon.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="index.html" class="nav-link">← SMS Dashboard</a>
+        <a href="mesh.html" class="nav-link">Mesh Simulator →</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="beacon-logo">📡</div>
+            <h1>Connect to Disaster Relief Zone</h1>
+            <div id="connection-status" class="status-box">
+                <button id="connect-btn">Connect to Zone A</button>
+            </div>
+        </header>
+
+        <main id="portal-content" class="hidden">
+            <div class="grid-layout">
+                <!-- Form Section -->
+                <section class="card form-section">
+                    <h2>Submit Relief Request</h2>
+                    <form id="beacon-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" placeholder="e.g. Sector 5, Street 12" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Request Type</label>
+                            <select id="type" required>
+                                <option value="" disabled selected>Select priority type</option>
+                                <option value="Medical">Medical Assistance</option>
+                                <option value="Food">Food / Water Supply</option>
+                                <option value="Rescue">Rescue Operation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Details</label>
+                            <textarea id="message" placeholder="Describe your emergency..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Request</button>
+                    </form>
+                    <div id="confirmation-msg" class="confirmation hidden">
+                        ✅ Request sent to local responder
+                    </div>
+                </section>
+
+                <!-- Dashboard Section -->
+                <section class="dashboard-section">
+                    <h2>Your Sent Requests</h2>
+                    <div id="requests-list" class="requests-list">
+                        <!-- Cards will be injected here -->
+                        <p class="empty-msg">No requests sent yet.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="beacon.js"></script>
+</body>
+</html>

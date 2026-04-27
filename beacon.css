@@ -1,0 +1,224 @@
+:root {
+    --bg: #f3f4f6;
+    --primary: #2563eb;
+    --secondary: #475569;
+    --medical: #ef4444;
+    --food: #f59e0b;
+    --rescue: #3b82f6;
+    --success: #10b981;
+    --white: #ffffff;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg);
+    color: var(--secondary);
+    line-height: 1.6;
+}
+
+.nav-bar {
+    background: var(--white);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.beacon-logo {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+.status-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#connect-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+#connect-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px -3px rgba(37, 99, 235, 0.4);
+}
+
+.connection-confirmed {
+    color: var(--success);
+    font-weight: 700;
+    background: #ecfdf5;
+    padding: 0.75rem 2rem;
+    border-radius: 2rem;
+    border: 2px solid var(--success);
+}
+
+/* Form & Dashboard */
+.hidden { display: none; }
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    border-bottom: 2px solid var(--bg);
+    padding-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: #1e293b;
+}
+
+.confirmation {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #ecfdf5;
+    color: #065f46;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Request Cards */
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.request-card {
+    background: var(--white);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    border-left: 5px solid #d1d5db;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.request-card.medical { border-left-color: var(--medical); }
+.request-card.food { border-left-color: var(--food); }
+.request-card.rescue { border-left-color: var(--rescue); }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.card-name { font-weight: 700; color: #111827; }
+.card-type { font-size: 0.75rem; text-transform: uppercase; font-weight: 800; }
+
+.card-team {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #9ca3af;
+    padding: 3rem 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+@media (max-width: 768px) {
+    .grid-layout { grid-template-columns: 1fr; }
+}
