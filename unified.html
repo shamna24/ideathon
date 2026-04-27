@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Dashboard | ResQLink</title>
+    <link rel="stylesheet" href="unified.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="index.html" class="nav-link">SMS Dashboard</a>
+        <a href="mesh.html" class="nav-link">Mesh Simulator</a>
+        <a href="beacon.html" class="nav-link">Beacon Portal</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>ResQLink Multi-Channel Disaster System</h1>
+            <p>Centralized Command & Control for Emergency Coordination</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="all">Unified Feed</button>
+            <button class="tab-btn" data-tab="sms">SMS System</button>
+            <button class="tab-btn" data-tab="mesh">Mesh Network</button>
+            <button class="tab-btn" data-tab="beacon">Beacon Hotspot</button>
+        </div>
+
+        <section class="dashboard-controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search requests by name, location, or type...">
+            </div>
+            <div class="stats-summary">
+                <div class="stat-card">
+                    <span class="stat-label">Total Requests</span>
+                    <span id="total-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-card pending">
+                    <span class="stat-label">Pending</span>
+                    <span id="pending-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-card completed">
+                    <span class="stat-label">Completed</span>
+                    <span id="completed-count" class="stat-value">0</span>
+                </div>
+            </div>
+        </section>
+
+        <main id="unified-feed" class="requests-feed">
+            <!-- Unified requests will be injected here -->
+            <div class="empty-state">
+                <p>Loading multi-channel data...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="unified.js"></script>
+</body>
+</html>

@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const teamMap = {
             'Medical': 'Ambulance',
             'Food': 'Food Team',
-            'Rescue': 'Rescue Team'
+            'Rescue': 'Rescue Team',
+            'General': 'Local Volunteers'
         };
 
         const newRequest = {

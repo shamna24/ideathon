@@ -187,6 +187,7 @@ textarea {
 .request-card.medical { border-left-color: var(--medical); }
 .request-card.food { border-left-color: var(--food); }
 .request-card.rescue { border-left-color: var(--rescue); }
+.request-card.general { border-left-color: var(--success); }
 
 .card-header {
     display: flex;

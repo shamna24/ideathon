@@ -107,6 +107,12 @@ header {
     transform: translateY(-2px);
 }
 
+.nav-btn.primary {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+}
+
 main {
     display: flex;
     flex-direction: column;
